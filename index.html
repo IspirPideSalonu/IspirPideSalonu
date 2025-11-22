@@ -57,11 +57,11 @@
     .search input{flex:1;padding:10px 12px;border-radius:10px;border:1px solid #eee}
     .filters{display:flex;gap:8px}
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .card-item{background:#fff;border-radius:12px;padding:12px;box-shadow:0 8px 20px rgba(0,0,0,0.06);display:flex;gap:12px;align-items:center;transition:transform .18s ease,box-shadow .18s ease}
+    .card-item{background:#fff;border-radius:12px;padding:12px;box-shadow:0 8px 20px rgba(0,0,0,0.06);display:flex;gap:12px;align-items:center;transition:transform .18s ease,box-shadow .18s ease;flex-wrap:wrap}
     .card-item:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.08)}
-    .item-thumb{width:84px;height:84px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;background:#f4f1ee;overflow:hidden}
-    .item-thumb img{width:100%;height:100%;object-fit:cover}
-    .item-body{flex:1}
+    .item-thumb{width:84px;height:84px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;background:#f4f1ee;overflow:hidden;flex-shrink:0}
+    .item-thumb img{width:100%;height:100%;object-fit:contain}
+    .item-body{flex:1;min-width:120px}
     .item-title{font-weight:800}
     .item-desc{color:var(--muted);font-size:13px;margin-top:4px}
 
@@ -70,7 +70,7 @@
     .wa{position:fixed;right:18px;bottom:18px;background:#25d366;border-radius:14px;color:white;padding:12px 14px;display:flex;gap:10px;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,0.15);z-index:60}
 
     @media (max-width:920px){.hero{grid-template-columns:1fr}.pizza-img{height:180px}.cards{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:520px){.card-item{flex-direction:column;align-items:flex-start}.item-thumb{width:100%;height:140px}.cards{grid-template-columns:1fr}nav ul{display:none}.nav{padding:10px}}
+    @media (max-width:520px){.card-item{flex-direction:column;align-items:flex-start}.item-thumb{width:100%;height:auto;min-height:140px}.cards{grid-template-columns:1fr}nav ul{display:none}.nav{padding:10px}}
 
     .fade-in{opacity:0;transform:translateY(6px);animation:fadeIn .6s ease forwards}
     .stagger{animation-delay:0.12s}
