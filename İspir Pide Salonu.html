@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>İSPİR PİDE SALONU</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#b40000;
+      --accent-2:#ff6a00;
+      --bg:#fbf8f5;
+      --card:#ffffff;
+      --muted:#6b6b6b;
+    }
+    *{box-sizing:border-box}
+
+    html,body{
+      min-height:100vh;
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(rgba(255,255,255,0.25), rgba(255,255,255,0.25)), url('arkaplan.png') no-repeat center center fixed;
+      background-size: cover;
+      color:#222;
+    }
+
+    #preloader{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),var(--accent-2));z-index:9999;flex-direction:column;color:white}
+    .logo{font-weight:900;font-size:34px;letter-spacing:2px;margin-bottom:18px}
+    .loader-ring{width:92px;height:92px;border-radius:50%;position:relative;display:inline-block}
+    .loader-ring:before{content:"";position:absolute;inset:6px;border-radius:50%;border:6px solid rgba(255,255,255,0.12)}
+    .loader-dot{width:18px;height:18px;background:white;border-radius:50%;position:absolute;top:6px;left:50%;transform:translateX(-50%);animation:spin 1.2s linear infinite}
+    @keyframes spin{from{transform:translateX(-50%) rotate(0deg)}to{transform:translateX(-50%) rotate(360deg)}}
+
+    header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.95);backdrop-filter:blur(6px);box-shadow:0 4px 18px rgba(0,0,0,0.06)}
+    .nav{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand .mark{width:52px;height:52px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .brand .mark img{width:100%;height:100%;object-fit:contain}
+    .brand h1{font-size:20px;margin:0}
+    nav ul{display:flex;gap:18px;align-items:center;margin:0;padding:0;list-style:none}
+    nav a{color:#333;text-decoration:none;font-weight:600}
+
+    .hero{max-width:1100px;margin:26px auto;padding:28px;border-radius:16px;display:grid;grid-template-columns:1fr 420px;gap:22px;align-items:center}
+    .hero .left{background:#fff;padding:28px;border-radius:12px;position:relative;z-index:1}
+    .eyebrow{color:var(--accent);font-weight:700;margin-bottom:6px}
+    .headline{font-size:36px;margin:6px 0 12px}
+    .lead{color:#6b6b6b;margin-bottom:18px}
+    .quick-actions{display:flex;gap:12px}
+    .btn{padding:10px 14px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:#fff;cursor:pointer;font-weight:700}
+
+    .hero .card{background:#fff;padding:18px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.06)}
+    .pizza-img{height:240px;background:#f4f1ee;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--accent);font-size:24px}
+
+    .menu-wrap{max-width:1100px;margin:18px auto;padding:0 20px}
+    .controls{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:12px;flex-wrap:wrap}
+    .search{flex:1;display:flex;gap:8px;min-width:180px}
+    .search input{flex:1;padding:10px 12px;border-radius:10px;border:1px solid #eee}
+    .filters{display:flex;gap:8px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card-item{background:#fff;border-radius:12px;padding:12px;box-shadow:0 8px 20px rgba(0,0,0,0.06);display:flex;gap:12px;align-items:center;transition:transform .18s ease,box-shadow .18s ease}
+    .card-item:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.08)}
+    .item-thumb{width:84px;height:84px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;background:#f4f1ee;overflow:hidden}
+    .item-thumb img{width:100%;height:100%;object-fit:cover}
+    .item-body{flex:1}
+    .item-title{font-weight:800}
+    .item-desc{color:var(--muted);font-size:13px;margin-top:4px}
+
+    footer{max-width:1100px;margin:28px auto;padding:22px;color:var(--muted);text-align:center}
+
+    .wa{position:fixed;right:18px;bottom:18px;background:#25d366;border-radius:14px;color:white;padding:12px 14px;display:flex;gap:10px;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,0.15);z-index:60}
+
+    @media (max-width:920px){.hero{grid-template-columns:1fr}.pizza-img{height:180px}.cards{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:520px){.card-item{flex-direction:column;align-items:flex-start}.item-thumb{width:100%;height:140px}.cards{grid-template-columns:1fr}nav ul{display:none}.nav{padding:10px}}
+
+    .fade-in{opacity:0;transform:translateY(6px);animation:fadeIn .6s ease forwards}
+    .stagger{animation-delay:0.12s}
+    @keyframes fadeIn{to{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <div id="preloader">
+    <div class="logo">İSPİR PİDE SALONU</div>
+    <div class="loader-ring"><div class="loader-dot"></div></div>
+    <div style="margin-top:12px;opacity:0.95">Lezzetin kapısını açıyoruz...</div>
+  </div>
+
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <div class="mark" id="logo-placeholder"><img src="Logo.png" alt="Logo"/></div>
+        <div>
+          <h1>İSPİR PİDE SALONU</h1>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">Gerçek pide, gerçek tat</div>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#menu">Menü</a></li>
+          <li><a href="#hakkimizda">Hakkımızda</a></li>
+          <li><a href="#iletisim">İletişim</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="left fade-in" style="position:relative;z-index:1">
+        <div class="eyebrow">Günün Özel</div>
+        <h2 class="headline">Sıcak, taze ve taş fırından — İSPİR'in en iyileri</h2>
+        <p class="lead">El yapımı pideler, zengin iç harçlar ve hızlı servis. İster yerinde ye, ister paket yaptır — lezzet garantili.</p>
+        <div class="quick-actions">
+          <button class="btn" onclick="scrollToMenu()">Menüyü Gör</button>
+          <a class="btn" href="#iletisim">Bizi Bul</a>
+        </div>
+      </div>
+      <div class="card fade-in stagger">
+        <div class="pizza-img">Taş Fırın &amp; Sıcak Pide</div>
+      </div>
+    </section>
+
+    <section id="menu" class="menu-wrap">
+      <div class="controls">
+        <div class="search">
+          <input id="search" placeholder="Ara: pideler, tatlılar..." oninput="renderMenu()" />
+        </div>
+        <div class="filters">
+          <select id="sort" onchange="renderMenu()">
+            <option value="default">Sırala: Öne çıkan</option>
+            <option value="price-asc">Fiyata göre (artan)</option>
+            <option value="price-desc">Fiyata göre (azalan)</option>
+          </select>
+        </div>
+      </div>
+      <div id="cards" class="cards"></div>
+    </section>
+
+    <section id="iletisim" style="max-width:1100px;margin:20px auto;padding:18px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap">
+      <div style="flex:1;min-width:260px;background:#fff;padding:16px;border-radius:12px">
+        <h4 style="margin-top:0">İletişim</h4>
+        <p style="margin:0;line-height:1.5">Adres: Karşıyaka, Hükumet Cad No:6, 25000 İspir/Erzurum<br>Telefon: 0505 916 00 60</p>
+      </div>
+      <div style="width:320px;min-width:240px;background:#fff;padding:16px;border-radius:12px">
+        <h4 style="margin-top:0">Telefon Sipariş</h4>
+        <p style="margin:0;line-height:1.5">Sipariş Hattı: 0442 451 2529</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>© 2025 İSPİR PİDE SALONU — Tüm hakları saklıdır</footer>
+
+  <a class="wa" id="whatsapp-btn" href="#" target="_blank">Sipariş Ver</a>
+
+  <script>
+    const menu = [
+      {name:'Kıymalı Pide',price:150,img:'KıymalıPide.png'},
+      {name:'Kıymalı Yumurtalı Pide',price:170,img:'KıymalıYumurtalıPide.png'},
+      {name:'Kıymalı Kaşarlı Pide',price:180,img:'KıymalıKaşarlıPide.png'},
+      {name:'Karışık Pide',price:200,img:'KarışıkPide.png'},
+      {name:'Sucuklu Pide',price:250,img:'SucukluPide.png'},
+      {name:'Kaşarlı Pide',price:200,img:'KaşarlıPide.png'},
+      {name:'Mantarlı Pide',price:200,img:'MantarlıPide.png'},
+      {name:'Kuşbaşılı Pide',price:200,img:'KuşbaşılıPide.png'},
+      {name:'Kuşbaşı Yumurtalı Pide',price:200,img:'KuşbaşıYumurtalıPide.png'},
+      {name:'Kuşbaşı Kaşarlı Pide',price:200,img:'KuşbaşıKaşarlıPide.png'},
+      {name:'Yağlı Pide',price:200,img:'YağlıPide.png'},
+      {name:'Lahmacun',price:75,img:'Lahmacun.png'},
+      {name:'Pizza',price:300,img:'Pizza.png'},
+      {name:'Künefe',price:150,img:'Künefe.png'},
+      {name:'Katmer',price:180,img:'Katmer.png'},
+      {name:'Teneke Kola',price:50,img:'TenekeKola.png'},
+      {name:'Şişe Kola',price:40,img:'ŞişeKola.png'},
+      {name:'Teneke Fanta',price:50,img:'TenekeFanta.png'},
+      {name:'Şişe Fanta',price:40,img:'ŞişeFanta.png'},
+      {name:'Küçük Ayran',price:20,img:'KüçükAyran.png'},
+      {name:'Büyük Ayran',price:30,img:'BüyükAyran.png'},
+      {name:'Meyve Suyu',price:50,img:'MeyveSuyu.png'},
+      {name:'Şalgam Suyu',price:40,img:'ŞalgamSuyu.png'},
+      {name:'Soda',price:40,img:'Soda.png'},
+      {name:'Su',price:15,img:'Su.png'}
+    ];
+
+    function renderMenu(){
+      const q = document.getElementById('search').value.trim().toLowerCase();
+      const sort = document.getElementById('sort').value;
+      let items = menu.filter(i=>i.name.toLowerCase().includes(q));
+      if(sort==='price-asc') items = items.slice().sort((a,b)=>a.price - b.price);
+      if(sort==='price-desc') items = items.slice().sort((a,b)=>b.price - a.price);
+      const container = document.getElementById('cards');
+      container.innerHTML = '';
+      items.forEach((it,idx)=>{
+        const el = document.createElement('div');
+        el.className = 'card-item fade-in';
+        el.style.animationDelay = (idx*0.06)+'s';
+        el.innerHTML = `<div class="item-thumb">${it.img ? '<img src="'+it.img+'"/>' : it.name.split(' ').map(w=>w[0]).join('')}</div><div class="item-body"><div class="item-title">${it.name}</div><div class="item-desc">${it.desc || 'Lezzet garantili.'}</div></div><div style="font-weight:900">₺${it.price}</div>`;
+        container.appendChild(el);
+      });
+    }
+
+    function scrollToMenu(){document.getElementById('menu').scrollIntoView({behavior:'smooth'});} 
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const pre = document.getElementById('preloader');
+      pre.style.transition = 'opacity .6s ease';
+      pre.style.opacity = '0';
+      setTimeout(() => pre.remove(), 700);
+
+      renderMenu();
+    });
+  </script>
+</body>
+</html>
