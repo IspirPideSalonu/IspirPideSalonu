@@ -208,5 +208,28 @@
       renderMenu();
     });
   </script>
+  <!-- Yöresel Müzik Butonu -->
+  <button id="musicBtn" style="position:fixed; bottom:20px; right:20px; padding:12px 18px; background:#b30000; color:white; border:none; border-radius:10px; font-size:16px; cursor:pointer; z-index:999;">Yöresel Müzik Başlat</button>
+
+  <audio id="musicPlayer" src="muzik.mp3"></audio>
+
+  <script>
+    const musicBtn = document.getElementById('musicBtn');
+    const music = document.getElementById('musicPlayer');
+    let isPlaying = false;
+
+    // Müzik Başlat/Durdur
+    musicBtn.addEventListener('click', () => {
+      if (!isPlaying) {
+        music.play();
+        musicBtn.textContent = 'Müziği Durdur';
+        isPlaying = true;
+      } else {
+        music.pause();
+        musicBtn.textContent = 'Yöresel Müzik Başlat';
+        isPlaying = false;
+      }
+    });
+  </script>
 </body>
 </html>
