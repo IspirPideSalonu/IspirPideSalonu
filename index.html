@@ -61,6 +61,37 @@
     .fade-in{opacity:0;transform:translateY(6px);animation:fadeIn .6s ease forwards}
     .stagger{animation-delay:0.12s}
     @keyframes fadeIn{to{opacity:1;transform:none}}
+
+    /* FAQ açılır/kapanır stili */
+    .faq-question {
+      width:100%;
+      text-align:left;
+      padding:12px 16px;
+      border:none;
+      background:rgba(255,255,255,0.85);
+      border-radius:10px;
+      font-weight:700;
+      cursor:pointer;
+      margin-bottom:6px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.06);
+      transition:background 0.3s ease;
+    }
+    .faq-question:hover { background:rgba(255,255,255,1); }
+    .faq-answer {
+      max-height:0;
+      overflow:hidden;
+      transition:max-height 0.35s ease, padding 0.35s ease;
+      padding:0 14px;
+      background:#fff;
+      border-left:4px solid var(--accent);
+      border-radius:0 0 10px 10px;
+      margin-bottom:10px;
+      color:#222;
+    }
+    .faq-item.active .faq-answer {
+      padding:12px 14px;
+      max-height:200px;
+    }
   </style>
 </head>
 <body>
@@ -123,10 +154,18 @@
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="faq-section">
+    <section id="faq" class="faq-section fade-in">
       <h3>Sık Sorulan Sorular</h3>
-      <div class="faq-item"><strong>“Paket servisiniz var mı?”</strong><br>Evet köyler dışında vardır 😊.</div>
-      <div class="faq-item"><strong>“Hangi saatlerde açıksınız?”</strong><br>10.00-20.00 Arası sipariş verebilirsiniz ❤️.</div>
+      
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Paket servisiniz var mı?</button>
+        <div class="faq-answer">Evet köyler dışında vardır 😊.</div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Hangi saatlerde açıksınız?</button>
+        <div class="faq-answer">10.00-20.00 Arası sipariş verebilirsiniz ❤️.</div>
+      </div>
     </section>
 
     <!-- Yorumlar -->
@@ -206,6 +245,12 @@
       setTimeout(() => pre.remove(), 700);
       renderMenu();
     });
+
+    // FAQ açılır/kapanır
+    function toggleFaq(btn){
+      const item = btn.parentElement;
+      item.classList.toggle('active');
+    }
   </script>
 
   <!-- Disqus -->
