@@ -14,23 +14,13 @@
       --muted:#6b6b6b;
     }
     *{box-sizing:border-box}
-
-    html,body{
-      min-height:100vh;
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      background: linear-gradient(rgba(255,255,255,0.25), rgba(255,255,255,0.25)), url('arkaplan.png') no-repeat center center fixed;
-      background-size: cover;
-      color:#222;
-    }
-
+    html,body{min-height:100vh;margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;background: linear-gradient(rgba(255,255,255,0.25), rgba(255,255,255,0.25)), url('arkaplan.png') no-repeat center center fixed;background-size: cover;color:#222;}
     #preloader{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),var(--accent-2));z-index:9999;flex-direction:column;color:white}
     .logo{font-weight:900;font-size:34px;letter-spacing:2px;margin-bottom:18px}
     .loader-ring{width:92px;height:92px;border-radius:50%;position:relative;display:inline-block}
     .loader-ring:before{content:"";position:absolute;inset:6px;border-radius:50%;border:6px solid rgba(255,255,255,0.12)}
     .loader-dot{width:18px;height:18px;background:white;border-radius:50%;position:absolute;top:6px;left:50%;transform:translateX(-50%);animation:spin 1.2s linear infinite}
     @keyframes spin{from{transform:translateX(-50%) rotate(0deg)}to{transform:translateX(-50%) rotate(360deg)}}
-
     header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.95);backdrop-filter:blur(6px);box-shadow:0 4px 18px rgba(0,0,0,0.06)}
     .nav{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
     .brand{display:flex;gap:12px;align-items:center}
@@ -39,7 +29,6 @@
     .brand h1{font-size:20px;margin:0}
     nav ul{display:flex;gap:18px;align-items:center;margin:0;padding:0;list-style:none}
     nav a{color:#333;text-decoration:none;font-weight:600}
-
     .hero{max-width:1100px;margin:26px auto;padding:28px;border-radius:16px;display:grid;grid-template-columns:1fr 420px;gap:22px;align-items:center}
     .hero .left{background:rgba(255,255,255,0.85);padding:28px;border-radius:12px;position:relative;z-index:1;color:#000}
     .eyebrow{color:var(--accent);font-weight:700;margin-bottom:6px}
@@ -47,10 +36,8 @@
     .lead{color:#000;margin-bottom:18px}
     .quick-actions{display:flex;gap:12px}
     .btn{padding:10px 14px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:#fff;color:#222;cursor:pointer;font-weight:700}
-
     .hero .card{background:#fff;padding:18px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.06)}
     .pizza-img{height:240px;background:#f4f1ee;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--accent);font-size:24px}
-
     .menu-wrap{max-width:1100px;margin:18px auto;padding:0 20px}
     .controls{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:12px;flex-wrap:wrap}
     .search{flex:1;display:flex;gap:8px;min-width:180px}
@@ -64,14 +51,13 @@
     .item-body{flex:1;min-width:120px}
     .item-title{font-weight:800}
     .item-desc{color:var(--muted);font-size:13px;margin-top:4px}
-
     footer{max-width:1100px;margin:28px auto;padding:22px;color:var(--muted);text-align:center}
-
     .wa{position:fixed;right:18px;bottom:18px;background:#25d366;border-radius:14px;color:white;padding:12px 14px;display:flex;gap:10px;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,0.15);z-index:60}
-
+    .faq-section{max-width:1100px;margin:20px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.06)}
+    .faq-section h3{margin-top:0;color:var(--accent)}
+    .faq-item{margin-bottom:12px}
     @media (max-width:920px){.hero{grid-template-columns:1fr}.pizza-img{height:180px}.cards{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:520px){.card-item{flex-direction:column;align-items:flex-start}.item-thumb{width:100%;height:auto;min-height:140px}.cards{grid-template-columns:1fr}nav ul{display:none}.nav{padding:10px}}
-
     .fade-in{opacity:0;transform:translateY(6px);animation:fadeIn .6s ease forwards}
     .stagger{animation-delay:0.12s}
     @keyframes fadeIn{to{opacity:1;transform:none}}
@@ -96,7 +82,8 @@
       <nav>
         <ul>
           <li><a href="#menu">Menü</a></li>
-          <li><a href="#hakkimizda">Hakkımızda</a></li>
+          <li><a href="#faq">SSS</a></li>
+          <li><a href="#yorumlar">Yorumlar</a></li>
           <li><a href="#iletisim">İletişim</a></li>
         </ul>
       </nav>
@@ -105,17 +92,17 @@
 
   <main>
     <section class="hero">
-      <div class="left fade-in" style="position:relative;z-index:1">
+      <div class="left fade-in">
         <div class="eyebrow">Günün Özel</div>
         <h2 class="headline">Sıcak, taze ve taş fırından — İSPİR'in en iyileri</h2>
-        <p class="lead" style="color:#000">El yapımı pideler, zengin iç harçlar ve hızlı servis. İster yerinde ye, ister paket yaptır — lezzet garantili.MURAT USTA'NIN ELLERİNDEN 🤌.</p>
+        <p class="lead">El yapımı pideler, zengin iç harçlar ve hızlı servis. İster yerinde ye, ister paket yaptır — lezzet garantili. MURAT USTA'NIN ELLERİNDEN 🤌.</p>
         <div class="quick-actions">
           <button class="btn" onclick="scrollToMenu()">Menüyü Gör</button>
           <a class="btn" href="#iletisim">Bizi Bul</a>
         </div>
       </div>
       <div class="card fade-in stagger">
-        <div class="pizza-img">Taş Fırın &amp; Sıcak Pide</div>
+        <div class="pizza-img">Taş Fırın & Sıcak Pide</div>
       </div>
     </section>
 
@@ -135,6 +122,19 @@
       <div id="cards" class="cards"></div>
     </section>
 
+    <!-- FAQ -->
+    <section id="faq" class="faq-section">
+      <h3>Sık Sorulan Sorular</h3>
+      <div class="faq-item"><strong>“Paket servisiniz var mı?”</strong><br>Evet köyler dışında vardır 😊.</div>
+      <div class="faq-item"><strong>“Hangi saatlerde açıksınız?”</strong><br>10.00-20.00 Arası sipariş verebilirsiniz ❤️.</div>
+    </section>
+
+    <!-- Yorumlar -->
+    <section id="yorumlar" class="faq-section">
+      <h3>Müşteri Yorumları</h3>
+      <div id="disqus_thread"></div>
+    </section>
+
     <section id="iletisim" style="max-width:1100px;margin:20px auto;padding:18px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap">
       <div style="flex:1;min-width:260px;background:#fff;padding:16px;border-radius:12px">
         <h4 style="margin-top:0">İletişim</h4>
@@ -145,7 +145,6 @@
         <p style="margin:0;line-height:1.5">Sipariş Hattı: 0442 451 2529</p>
       </div>
     </section>
-
   </main>
 
   <footer>© 2025 İSPİR PİDE SALONU — Tüm hakları saklıdır</footer>
@@ -198,7 +197,7 @@
       });
     }
 
-    function scrollToMenu(){document.getElementById('menu').scrollIntoView({behavior:'smooth'});} 
+    function scrollToMenu(){document.getElementById('menu').scrollIntoView({behavior:'smooth'});}
 
     window.addEventListener('DOMContentLoaded', () => {
       const pre = document.getElementById('preloader');
@@ -208,29 +207,33 @@
       renderMenu();
     });
   </script>
-  <!-- Yöresel Müzik Butonu -->
+
+  <!-- Disqus -->
+  <script>
+    var disqus_config = function () {
+      this.page.url = window.location.href;
+      this.page.identifier = "ispirpidesalonu-page";
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://ispirpidesalonu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <script id="dsq-count-scr" src="//ispirpidesalonu.disqus.com/count.js" async></script>
+
+  <!-- Yöresel Müzik -->
   <button id="musicBtn" style="position:fixed; bottom:20px; right:20px; padding:12px 18px; background:#b30000; color:white; border:none; border-radius:10px; font-size:16px; cursor:pointer; z-index:999;">Yöresel Müzik Başlat</button>
-
   <audio id="musicPlayer" src="muzik.mp3"></audio>
-
   <script>
     const musicBtn = document.getElementById('musicBtn');
     const music = document.getElementById('musicPlayer');
     let isPlaying = false;
-
-    // Müzik Başlat/Durdur
     musicBtn.addEventListener('click', () => {
-      if (!isPlaying) {
-        music.play();
-        musicBtn.textContent = 'Müziği Durdur';
-        isPlaying = true;
-      } else {
-        music.pause();
-        musicBtn.textContent = 'Yöresel Müzik Başlat';
-        isPlaying = false;
-      }
+      if (!isPlaying) { music.play(); musicBtn.textContent = 'Müziği Durdur'; isPlaying = true; }
+      else { music.pause(); musicBtn.textContent = 'Yöresel Müzik Başlat'; isPlaying = false; }
     });
   </script>
 </body>
 </html>
-
